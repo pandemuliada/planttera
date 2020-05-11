@@ -16,7 +16,7 @@ export const CurrentUserProvider = ({ children }) => {
   }, [])
 
   async function getCurrentUser() {
-    const response = await privateApi().get('users/current_user')
+    const response = await privateApi().get('users/current')
 
     if (!!response.data.data) {
       setCurrentUser(response.data.data)

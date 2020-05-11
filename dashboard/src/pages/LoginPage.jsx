@@ -40,7 +40,7 @@ const LoginPage = () => {
     const { email, password } = values
 
     api()
-      .post('users/login', {
+      .post('login', {
         email,
         password,
       })
