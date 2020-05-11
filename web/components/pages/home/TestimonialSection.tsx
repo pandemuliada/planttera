@@ -38,14 +38,14 @@ const TestimonialCarousel: React.FC<any> = ({ data }) => {
   return (
     <Carousel
       keepDirectionWhenDragging
-      centered
       infinite
       clickToChange
       slidesPerPage={2}
-      itemWidth={270}
+      itemWidth={280}
       breakpoints={{
         480: {
           infinite: false,
+          centered: true,
         },
       }}
     >
@@ -60,7 +60,7 @@ const TestimonialCarousel: React.FC<any> = ({ data }) => {
           width="100%"
           my="20px"
           textAlign="center"
-          height={350}
+          height={300}
           display="flex"
           flexDir="column"
           justifyContent="center"
@@ -85,13 +85,21 @@ const TestimonialSection: React.FC = () => {
   return (
     <Box as="section" py="60px" bg="#fcfcfc">
       <Container textAlign="center" mx="auto">
-        <Heading as="h2" color="gray.700" size="xl" mb="25px">
+        <Heading display={{ base: 'block', md: 'none' }} as="h2" color="gray.700" size="xl" mb="25px">
           Kata Mereka
         </Heading>
       </Container>
       {windowWidth > 720 ? (
-        <Container mx="auto">
-          <TestimonialCarousel data={testimonials} />
+        <Container mx="auto" display="flex" alignItems="center" position="relative">
+          <Box width="40%" mr="50px">
+            <Image src="/images/newsletter-fg.png" width="100%" objectFit="cover" />
+          </Box>
+          <Box width="60%">
+            <Heading as="h2" color="gray.700" size="xl" mb="25px">
+              Kata Mereka
+            </Heading>
+            <TestimonialCarousel data={testimonials} />
+          </Box>
         </Container>
       ) : (
         <TestimonialCarousel data={testimonials} />
