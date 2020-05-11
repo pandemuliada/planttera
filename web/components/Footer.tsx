@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               Planttera
             </Heading>
             <Text color="gray.600" mb="5px">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, officiis quo.
+              Planttera adalah toko online yang mejual berbagai jenis tanaman
             </Text>
           </Box>
           <Box display="flex" flexDir="column">

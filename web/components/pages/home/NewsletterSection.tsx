@@ -20,9 +20,11 @@ const NewsletterSection: React.FC = () => {
         <Text color="gray.600" mb="35px">
           Dapatkan info tentang tanaman terbaru dari Planttera
         </Text>
-        <Box>
-          <Input size="lg" placeholder="youremail@example.com" rounded="0" focusBorderColor="teal.400" mb="10px" />
-          <PrimaryButton>SUBSCRIBE</PrimaryButton>
+        <Box display="flex" flexDir={{ base: 'column', md: 'row' }} width={{ base: '90%', md: '550px' }} mx="auto">
+          <Input size="lg" placeholder="youremail@example.com" rounded="0" focusBorderColor="teal.400" />
+          <PrimaryButton letterSpacing="1px" textTransform="uppercase" mt={{ base: '10px', md: '0px' }}>
+            Subscribe
+          </PrimaryButton>
         </Box>
       </Container>
     </Box>
