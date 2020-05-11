@@ -1,10 +1,9 @@
-# planttera
+# Planttera
 My open source project for learning purpose
 
 ## Start the API Service
 1. Change directory to `/api`
 2. Do `yarn install`
-3. Create database with name `planttera_development` on your local (I use laragon for local development environtment)
 4. Do `yarn sequelize-cli db:migrate` & `yarn sequelize-cli db:seed:all`
 5. Start the service using `yarn start`
 
