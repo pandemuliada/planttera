@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { Box, Heading, Image, Flex, Text } from '@chakra-ui/core'
 import { IoMdQuote } from 'react-icons/io'
 import Container from '../../Container'
+import useWindowWidth from '../../../hooks/use-window-width'
 
 const Carousel = dynamic(() => import('@brainhubeu/react-carousel'), { ssr: false })
 
@@ -21,9 +22,66 @@ const testimonials = [
     avatar: '/images/person-3.jpg',
     message: 'Tanamannya sangat bagus dan mudah dirawat',
   },
+  {
+    user: 'Margaret',
+    avatar: '/images/person-2.jpg',
+    message: 'Tanamannya sangat bagus dan mudah dirawat',
+  },
+  {
+    user: 'Akeru',
+    avatar: '/images/person-3.jpg',
+    message: 'Tanamannya sangat bagus dan mudah dirawat',
+  },
 ]
 
-const TestimoniSection: React.FC = () => {
+const TestimonialCarousel: React.FC<any> = ({ data }) => {
+  return (
+    <Carousel
+      keepDirectionWhenDragging
+      centered
+      infinite
+      clickToChange
+      slidesPerPage={2}
+      itemWidth={270}
+      breakpoints={{
+        480: {
+          infinite: false,
+        },
+      }}
+    >
+      {data.map((testimony: any, index: number) => (
+        <Box
+          key={testimony.user + index}
+          position="relative"
+          boxShadow="md"
+          bg="white"
+          p="20px"
+          mr="20px"
+          width="100%"
+          my="20px"
+          textAlign="center"
+          height={350}
+          display="flex"
+          flexDir="column"
+          justifyContent="center"
+        >
+          <Box as={IoMdQuote} size="50px" position="absolute" top="-20px" zIndex={2} color="teal.400" opacity={0.8} />
+          <Image src={testimony.avatar} width="100px" rounded="50%" mx="auto" />
+          <Heading as="h6" size="md" mt="10px" color="gray.600">
+            {testimony.user}
+          </Heading>
+          <Text color="gray.600" mt="12px">
+            {testimony.message}
+          </Text>
+        </Box>
+      ))}
+    </Carousel>
+  )
+}
+
+const TestimonialSection: React.FC = () => {
+  const [windowWidth] = useWindowWidth()
+
   return (
     <Box as="section" py="60px" bg="#fcfcfc">
       <Container textAlign="center" mx="auto">
@@ -31,32 +89,15 @@ const TestimoniSection: React.FC = () => {
           Kata Mereka
         </Heading>
       </Container>
-      <Carousel keepDirectionWhenDragging centered clickToChange slidesPerPage={2} itemWidth={300}>
-        {testimonials.map((testimony: any, index: number) => (
-          <Box
-            key={testimony.user}
-            position="relative"
-            boxShadow="md"
-            bg="white"
-            p="20px"
-            mr="20px"
-            width="100%"
-            my="20px"
-            textAlign="center"
-          >
-            <Box as={IoMdQuote} size="50px" position="absolute" top="-20px" zIndex={2} color="teal.400" opacity={0.8} />
-            <Image src={testimony.avatar} width="100px" rounded="50%" mx="auto" />
-            <Heading as="h6" size="md" mt="10px" color="gray.600">
-              {testimony.user}
-            </Heading>
-            <Text color="gray.600" mt="12px">
-              {testimony.message}
-            </Text>
-          </Box>
-        ))}
-      </Carousel>
+      {windowWidth > 720 ? (
+        <Container mx="auto">
+          <TestimonialCarousel data={testimonials} />
+        </Container>
+      ) : (
+        <TestimonialCarousel data={testimonials} />
+      )}
     </Box>
   )
 }
 
-export default TestimoniSection
+export default TestimonialSection

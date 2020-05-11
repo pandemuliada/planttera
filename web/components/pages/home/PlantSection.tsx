@@ -16,8 +16,8 @@ const PlantCarousel: React.FC<any> = ({ data }) => {
   return (
     <Carousel
       keepDirectionWhenDragging
-      centered
       infinite
+      centered
       clickToChange
       slidesPerPage={2}
       itemWidth={270}
