@@ -25,7 +25,7 @@ const DashboardPage = () => {
       label: 'Name',
       render: ({ name, picture }) => (
         <div className="flex items-center w-auto">
-          <img src={url(`static/images/plants/${picture}`) || defaultImage} className="w-10 h-10 mr-3 rounded-full" alt="" />
+          <img src={url(picture) || defaultImage} className="w-10 h-10 mr-3 rounded-full" alt="" />
           <span>{name}</span>
         </div>
       ),

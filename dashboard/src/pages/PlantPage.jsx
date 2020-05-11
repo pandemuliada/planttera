@@ -40,11 +40,7 @@ const PlantPage = () => {
       label: 'Name',
       render: ({ name, picture }) => (
         <div className="flex items-center">
-          <img
-            src={(picture && url(`static/images/plants/${picture}`)) || defaultImage}
-            className="w-10 h-10 mr-3 rounded-full"
-            alt=""
-          />
+          <img src={url(picture) || defaultImage} className="w-10 h-10 mr-3 rounded-full" alt="" />
           <span>{name}</span>
         </div>
       ),
@@ -203,7 +199,7 @@ const PlantPage = () => {
     const formData = new FormData()
     formData.append('picture', file)
 
-    const response = await privateApi().put(`plants/change_picture/${editedItem.id}`, formData)
+    const response = await privateApi().put(`plants/${editedItem.id}/change_picture`, formData)
 
     if (response && response.data.data) {
       onCancelEdit()
@@ -255,10 +251,7 @@ const PlantPage = () => {
         {activeTab === 'image' && (
           <PictureForm
             initialImage={
-              (!!editedItem &&
-                editedItem.picture &&
-                url(`static/images/plants/${editedItem.picture}`)) ||
-              defaultImage
+              (!!editedItem && editedItem.picture && url(editedItem.picture)) || defaultImage
             }
             onSubmit={file => onCommitChangeImage(file)}
             onCancel={() => onCancelEdit()}
