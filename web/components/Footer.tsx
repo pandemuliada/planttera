@@ -4,7 +4,7 @@ import NextLink from './NextLink'
 
 const Footer: React.FC = () => {
   return (
-    <Box as="footer" py="40px">
+    <Box as="footer" py="40px" borderTop="1px solid" borderColor="gray.200">
       <Container mx="auto">
         <Grid gridTemplateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap="20px">
           <Box display="flex" flexDir="column">

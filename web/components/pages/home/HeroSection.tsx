@@ -28,7 +28,7 @@ const HeroSection = () => {
             color={windowWidth >= 992 ? 'gray.700' : 'white'}
             lineHeight="auto"
             mb="25px"
-            fontWeight="800"
+            fontWeight="700"
           >
             Percantik Rumah <br /> Dengan Tanaman
           </Heading>

@@ -89,7 +89,7 @@ const MobileNav: React.FC<iMobileNavProps> = (props) => {
           href="/"
           as="/"
           fontSize={{ base: '20px', sm: '22px' }}
-          color="gray.600"
+          color="teal.400"
           fontWeight="bold"
           _hover={{ textDecoration: 'none' }}
         >
@@ -165,7 +165,7 @@ const DesktopNav: React.FC<iDesktopNav> = (props) => {
           href="/"
           as="/"
           fontSize={{ base: '20px', sm: '22px' }}
-          color="gray.600"
+          color="teal.400"
           fontWeight="bold"
           _hover={{ textDecoration: 'none' }}
         >
@@ -202,7 +202,7 @@ const Navigation = () => {
   return (
     <Box as="nav" py="20px" position="fixed" backgroundColor="white" boxShadow="md" width="100%" zIndex={20}>
       <Container mx="auto">
-        {windowWidth > 480 ? (
+        {windowWidth >= 767 ? (
           <DesktopNav navLinks={navLinks} />
         ) : (
           <MobileNav navLinks={navLinks} visible={visible} onToggleNav={(visible: boolean) => toggleNav(visible)} />

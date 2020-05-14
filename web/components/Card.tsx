@@ -1,7 +1,7 @@
 import { Box, Image, Heading, Text, BoxProps } from '@chakra-ui/core'
 import { motion } from 'framer-motion'
 
-interface iCarProps extends BoxProps {
+interface iCardProps extends BoxProps {
   image?: {
     src: string
     alt?: string
@@ -11,7 +11,7 @@ interface iCarProps extends BoxProps {
   [x: string]: any
 }
 
-const Card: React.FC<iCarProps> = (props) => {
+const Card: React.FC<iCardProps> = (props) => {
   const { image, title, subtitle, children, ...rest } = props
 
   const MotionBox = motion.custom(Box)
@@ -23,7 +23,7 @@ const Card: React.FC<iCarProps> = (props) => {
 
   return (
     <Box position="relative" {...rest}>
-      <Image src={image?.src} alt={image?.alt || ''} height="100%" />
+      <Image src={image?.src} alt={image?.alt || ''} width="100%" height="100%" objectFit="cover" />
       <MotionBox
         position="absolute"
         top="0"
