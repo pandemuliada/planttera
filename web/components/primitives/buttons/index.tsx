@@ -7,6 +7,7 @@ const primaryButtonStyles = {
   borderColor: 'teal.400',
   borderWidth: '1px',
   borderStyle: 'solid',
+  cursor: 'pointer',
   _hover: {
     bg: 'teal.500',
     borderColor: 'teal.500',
@@ -27,7 +28,7 @@ const PrimaryButton: React.FC<PseudoBoxProps> = (props) => {
   const { ...rest } = props
 
   return (
-    <PseudoBox {...primaryButtonStyles} {...rest}>
+    <PseudoBox as="button" {...primaryButtonStyles} {...rest}>
       {props.children}
     </PseudoBox>
   )

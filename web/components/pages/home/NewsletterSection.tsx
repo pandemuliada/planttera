@@ -12,6 +12,8 @@ const NewsletterSection: React.FC = () => {
       bgSize="cover"
       backgroundRepeat="no-repeat"
       height="400px"
+      display="flex"
+      alignItems="center"
     >
       <Container mx="auto" textAlign="center">
         <Heading as="h2" color="gray.700" size="xl" mb="25px">
