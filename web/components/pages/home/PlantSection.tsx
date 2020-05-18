@@ -4,7 +4,7 @@ import { Box, Heading, Text } from '@chakra-ui/core'
 import Container from '../../Container'
 import { iRootState } from '../../../redux/reducers'
 import { useEffect } from 'react'
-import { url } from '../../../utils/api'
+import { url, Api } from '../../../utils/api'
 import { PrimaryButton } from '../../primitives/buttons'
 import NextLink from '../../NextLink'
 import useWindowWidth from '../../../hooks/use-window-width'
@@ -60,14 +60,12 @@ const PlantSection: React.FC = () => {
 
   function loadData() {
     Dispatch({ type: 'GET_PLANTS_PENDING' })
-    fetch('http://localhost:3000/plants')
+    Api()
+      .get('/plants')
       .then((res) => {
-        return res.json()
+        Dispatch({ type: 'GET_PLANTS_FULLFILLED', payload: [...res.data.data] })
       })
-      .then((res) => {
-        Dispatch({ type: 'GET_PLANTS_FULLFILLED', payload: [...res.data] })
-      })
-      .catch((err) => console.log(err))
+      .catch((error) => console.log(error.response))
   }
 
   return (
