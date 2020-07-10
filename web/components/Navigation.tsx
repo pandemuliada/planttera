@@ -6,6 +6,7 @@ import { useState } from 'react'
 import useWindowWidth from '../hooks/use-window-width'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { PrimaryButton } from './primitives/buttons'
 
 interface iNavLink {
   key: string
@@ -33,6 +34,11 @@ const navLinks: iNavLink[] = [
     key: 'how-to-order',
     route: '/how-to-order',
     label: 'Cara Pesan',
+  },
+  {
+    key: 'login',
+    route: '/login',
+    label: 'Masuk',
   },
 ]
 
@@ -120,17 +126,35 @@ const MobileNav: React.FC<iMobileNavProps> = (props) => {
         animate={visible ? 'show' : 'hide'}
         variants={variants}
       >
-        {navLinks.map((link: iNavLink) => (
-          <NextLink
-            key={link.key}
-            href={link.route}
-            as={link.route}
-            {...linkStyles}
-            {...(Router.pathname === link.route && activeLinkStyles)}
-          >
-            {link.label}
-          </NextLink>
-        ))}
+        {navLinks.map((link: iNavLink) => {
+          return (
+            <>
+              {link.key === 'login' ? (
+                <NextLink
+                  key={link.key}
+                  href={link.route}
+                  as={link.route}
+                  // {...linkStyles}
+                  {...(Router.pathname === link.route && activeLinkStyles)}
+                >
+                  <PrimaryButton display="block" width="100%">
+                    {link.label}
+                  </PrimaryButton>
+                </NextLink>
+              ) : (
+                <NextLink
+                  key={link.key}
+                  href={link.route}
+                  as={link.route}
+                  {...linkStyles}
+                  {...(Router.pathname === link.route && activeLinkStyles)}
+                >
+                  {link.label}
+                </NextLink>
+              )}
+            </>
+          )
+        })}
       </MotionBox>
     </>
   )
@@ -147,6 +171,7 @@ const DesktopNav: React.FC<iDesktopNav> = (props) => {
 
   const linkStyles = {
     color: 'gray.600',
+    ml: 5,
     _hover: {
       textDecoration: 'none',
       color: 'teal.400',
@@ -173,19 +198,37 @@ const DesktopNav: React.FC<iDesktopNav> = (props) => {
         </NextLink>
 
         {/* Display on > 480px width  */}
-        <Grid templateColumns="repeat(4, 1fr)" ml="auto" columnGap={1}>
-          {navLinks.map((link: iNavLink) => (
-            <NextLink
-              key={link.key}
-              href={link.route}
-              as={link.route}
-              {...linkStyles}
-              {...(Router.pathname === link.route && activeLinkStyles)}
-            >
-              {link.label}
-            </NextLink>
-          ))}
-        </Grid>
+        <Flex flexDir="row" ml="auto" alignItems="center">
+          {navLinks.map((link: iNavLink) => {
+            return (
+              <>
+                {link.key === 'login' ? (
+                  <NextLink
+                    key={link.key}
+                    href={link.route}
+                    as={link.route}
+                    {...linkStyles}
+                    {...(Router.pathname === link.route && activeLinkStyles)}
+                  >
+                    <PrimaryButton display="block" width="100%">
+                      {link.label}
+                    </PrimaryButton>
+                  </NextLink>
+                ) : (
+                  <NextLink
+                    key={link.key}
+                    href={link.route}
+                    as={link.route}
+                    {...linkStyles}
+                    {...(Router.pathname === link.route && activeLinkStyles)}
+                  >
+                    {link.label}
+                  </NextLink>
+                )}
+              </>
+            )
+          })}
+        </Flex>
       </Flex>
     </>
   )
@@ -201,7 +244,7 @@ const Navigation = () => {
 
   return (
     <Box as="nav" py="20px" position="fixed" backgroundColor="white" boxShadow="md" width="100%" zIndex={20}>
-      <Container mx="auto">
+      <Container width={{ md: '80%' }} mx="auto">
         {windowWidth >= 767 ? (
           <DesktopNav navLinks={navLinks} />
         ) : (

@@ -8,6 +8,7 @@ const primaryButtonStyles = {
   borderWidth: '1px',
   borderStyle: 'solid',
   cursor: 'pointer',
+  outline: 'none',
   _hover: {
     bg: 'teal.500',
     borderColor: 'teal.500',
