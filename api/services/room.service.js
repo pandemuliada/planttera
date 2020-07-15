@@ -9,6 +9,7 @@ async function find(params) {
   try {
     const data = await Room.findAll({
       where: { ...params },
+      include: [{ all: true }],
     })
 
     if (data) {

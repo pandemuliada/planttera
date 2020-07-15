@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
   )
   Room.associate = function(models) {
     // associations can be defined here
+    Room.hasMany(models.Plant, {
+      as: 'plants',
+      onDelete: 'cascade',
+    })
   }
   return Room
 }

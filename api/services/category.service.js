@@ -9,6 +9,7 @@ async function find(params) {
   try {
     const data = await Category.findAll({
       where: { ...params },
+      include: [{ all: true }],
     })
 
     if (data) {
