@@ -6,18 +6,18 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
       {
-        name: 'Admin',
-        email: 'admin@gmail.com',
-        password: hashPassword('admin@gmail.com'),
-        role: 'admin',
+        name: 'Super Admin',
+        email: 'superadmin@gmail.com',
+        password: hashPassword('superadmin@gmail.com'),
+        roleId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Operator',
-        email: 'operator@gmail.com',
-        password: hashPassword('operator@gmail.com'),
-        role: 'operator',
+        name: 'User',
+        email: 'user@gmail.com',
+        password: hashPassword('user@gmail.com'),
+        roleId: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

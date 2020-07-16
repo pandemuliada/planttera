@@ -8,8 +8,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('Users', 'picture', {
-      type: Sequelize.STRING,
-    })
+    return queryInterface.removeColumn('Users', 'picture')
   },
 }

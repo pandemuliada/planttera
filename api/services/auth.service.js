@@ -36,7 +36,10 @@ async function login({ email, password }) {
   }
 
   try {
-    const user = await User.findOne({ where: { email } })
+    const user = await User.findOne({
+      where: { email },
+      include: [{ all: true }],
+    })
 
     if (user) {
       const passwordMatch = comparePassword(password, user.password)

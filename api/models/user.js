@@ -6,13 +6,16 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      role: DataTypes.STRING,
+      roleId: DataTypes.INTEGER,
       picture: DataTypes.STRING,
     },
     {}
   )
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsTo(models.Role, {
+      foreignKey: 'roleId',
+      as: 'role',
+    })
   }
   return User
 }
