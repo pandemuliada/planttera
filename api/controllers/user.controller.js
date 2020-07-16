@@ -13,7 +13,7 @@ const changePicture = async (req, res) => {
 
 // Current User Function
 const currentUser = async (req, res) => {
-  const { decoded: user } = req
+  const { user } = req
   const { data, error } = await UserService.findById(user.id)
 
   if (!!data) {
@@ -24,7 +24,7 @@ const currentUser = async (req, res) => {
 }
 
 const updateCurrentUser = async (req, res) => {
-  const { decoded: user } = req
+  const { user } = req
   const { data, error } = await UserService.update(req.body, user.id)
 
   if (!!data) {
@@ -35,7 +35,7 @@ const updateCurrentUser = async (req, res) => {
 }
 
 const changePassword = async (req, res) => {
-  const { decoded: user } = req
+  const { user } = req
 
   const { data, error } = await UserService.changePassword(req.body, { id: user.id })
 
