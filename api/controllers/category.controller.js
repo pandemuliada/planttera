@@ -5,9 +5,9 @@ const find = async (req, res) => {
   const { data, error } = await CategoryService.find(req.query)
 
   if (!!data) {
-    res.status(successResponse[2001].code).json({ ...successResponse[2001], data })
+    res.successResponse(2001, { data })
   } else if (error) {
-    res.status(errorResponse[4004].code).json({ ...errorResponse[4004], message: error })
+    res.errorResponse(4004, { message: error })
   }
 }
 

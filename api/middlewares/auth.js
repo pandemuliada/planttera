@@ -14,7 +14,7 @@ const authentication = (req, res, next) => {
       next()
     }
   } catch (error) {
-    res.status(401).json({ message: 'Unauthorized, you need to login!' })
+    res.errorResponse(4002)
   }
 }
 
