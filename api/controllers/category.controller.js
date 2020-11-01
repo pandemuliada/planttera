@@ -11,8 +11,8 @@ const find = async (req, res) => {
   }
 }
 
-const findById = async (req, res) => {
-  const { data, error } = await CategoryService.findById(req.params.id)
+const findOne = async (req, res) => {
+  const { data, error } = await CategoryService.findOne(req.params.id)
 
   if (!!data) {
     res.status(successResponse[2001].code).json({ ...successResponse[2001], data })
@@ -53,7 +53,7 @@ const destroy = async (req, res) => {
 
 module.exports = {
   find,
-  findById,
+  findOne,
   create,
   update,
   destroy,

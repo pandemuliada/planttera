@@ -24,7 +24,7 @@ async function find(params) {
   }
 }
 
-async function findById(id) {
+async function findOne(id) {
   let res = {
     data: null,
     error: null,
@@ -138,7 +138,7 @@ async function destroy(params) {
 
 module.exports = {
   find,
-  findById,
+  findOne,
   create,
   update,
   destroy,
