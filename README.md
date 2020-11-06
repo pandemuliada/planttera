@@ -23,8 +23,8 @@ Planttera is website to order plant. This project is also included Dashboard for
 4. You can login using one of these account
 
 ```
-  email: admin@gmail.com
-  pass: admin@gmail.com
+  email: superadmin@gmail.com
+  pass: superadmin@gmail.com
 
   email: operator@gmail.com
   pass: operator@gmail.com
